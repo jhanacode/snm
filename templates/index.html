@@ -1,0 +1,60 @@
+<!--
+ ___    ____                  _               
+|_ _|  / ___|  ___ _ ____   _(_) ___ ___  ___ 
+ | |   \___ \ / _ \ '__\ \ / / |/ __/ _ \/ __|
+ | |    ___) |  __/ |   \ V /| | (_|  __/\__ \
+|___|  |____/ \___|_|    \_/ |_|\___\___||___/
+            ...when IT matters!				
+                                                
+https://iservicesinc.com https://iservicesinc.net
+Copyright 2024 I Services, Inc. All rights reserved.
+-->
+<!doctype html>
+<html>
+<head>
+    <title>SNM - Simple Network Monitor</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SNM is a simple network monitor that displays sites status in real time.">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.12/dist/css/uikit.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.12/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.12/dist/js/uikit-icons.min.js"></script>
+    <script src="https://unpkg.com/htmx.org@2.0.2"></script>
+    <style>
+        html {
+            background-color: #1e1e1e;
+            color: #e8e8e8;
+        }
+        .sites {
+            position: relative;
+        }
+        .htmx-request::after {
+            content: 'Loading...';
+            background-color: #1e1e1e88;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 0;
+            left: -40px;
+            width: calc(100% + 40px);
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header class="uk-text-center uk-padding uk-light">
+        <h1 class="uk-heading-large uk-margin-remove">SNM</h1>
+        <h2 class="uk-h4 uk-light uk-margin-remove">Simple Network Monitor</h2>
+    </header>
+    <content class="uk-container uk-container-small uk-padding-remove">
+        {% for item in hosts %}
+        <div class="sites" hx-get="/ping/{{ item.host }}/{{ item.port }}" hx-trigger="load, every 30s"></div>
+        {% endfor %}
+    </content>
+    <footer class="uk-text-center uk-padding">
+       <p class="uk-text-small uk-text-muted">&copy; 2024 JhanaCode.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<div class="uk-margin-small uk-placeholder uk-padding-remove">
+    <div class="uk-padding-small" uk-grid>
+        <div class="uk-width-expand">
+            <a href="{{ host }}" class="{% if result == 0 %}uk-text-success{% else %}uk-text-danger{% endif %}">{{ host }}:{{ port }}</a>
+        </div>
+        <div class="uk-width-auto">
+            <span class="{% if result == 0 %}uk-text-success{% else %}uk-text-danger{% endif %}">{% if result == 0 %} Online {% else %} Offline {% endif %}</span>
+        </div>
+    </div>
+</div>
