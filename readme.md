@@ -22,7 +22,7 @@ Simply edit the `app.py` file to add your domains/ip addresses and ports to the 
 ```bash
 python -m venv .venv
 .venv/Scripts/activate # on Windows
-. .venv/bin/activete # on Linux or Mac
+. .venv/bin/activate # on Linux or Mac
 ```
 
 **Install requirements:**
